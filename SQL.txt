@@ -1,0 +1,103 @@
+use webshop_test1;
+
+create table if not exists o_kat (
+  o_kat_id int primary key not null auto_increment,
+  o_kat_name varchar(50) not null
+);
+
+create table if not exists  u_kat (
+  u_kat_id int primary key not null auto_increment,
+  u_kat_name varchar(50) not null,
+  o_kat_id int,
+  foreign key (o_kat_id) references o_kat(o_kat_id)
+);
+
+create table artikel (
+  art_id int primary key not null auto_increment,
+  art_name varchar(50) not null,
+  art_desc varchar(200),
+  art_preis double,
+  art_bild varchar(120),
+  u_kat_id int,
+  foreign key (u_kat_id) references u_kat(u_kat_id)
+);
+
+create table lager (
+  id int primary key not null auto_increment,
+  art_id int,
+  menge int,
+  grenze int,
+  foreign key (art_id) references artikel(art_id)
+);
+
+create table Kunde (
+  id int auto_increment primary key,
+  vorname varchar(100) not null,
+  nachname varchar(100) not null,
+  email varchar(100) not null,
+  passwort varchar(45) not null,
+  strasse varchar(100),
+  hausnr char(5),
+  plz char(5),
+  ort varchar(100) null,
+  reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  constraint email unique (email)
+);
+
+
+create table Bestellung (
+  id  int auto_increment primary key,
+  kunde_id int null,
+  order_date datetime not null,
+  Best_nummer char(40) not null,
+  Beschreibung varchar(100),
+  constraint foreign key (kunde_id) references Kunde (id)
+);
+
+
+create table Bestellung_pos (
+  id  int auto_increment primary key,
+  best_id int null,
+  art_id int not null,
+  anzahl int not null,
+  preis double not null,
+  constraint foreign key (art_id) references artikel (art_id),
+  constraint foreign key (best_id) references Bestellung (id)
+);
+
+create table warenkorb(
+  id int primary key not null auto_increment,
+  kunden_id int not null,
+  art_id int not null,
+  menge int,
+  foreign key (kunden_id) references Kunde(id),
+  foreign key (art_id) references artikel(art_id)
+);
+
+--INSERTS
+
+insert into o_kat values
+(1, 'Verbandstoffe'),
+(2, 'Hygiene'),
+(3, 'Diagnostik'),
+(4, 'Medizinische Bekleidung'),
+(5, 'Notfall'),
+(6, 'Instrumente'),
+(7, 'Laborbedarf'),
+(8, 'Praxiseinrichtung'),
+(9, 'Praxisorganisation'),
+(10, 'Infusion/Injektion'),
+(11, 'Diagnostik');
+
+insert into u_kat values
+ #    (u_kat_id, u_kat_name, o_kat_id) values
+
+(1, 'Verbandmittel', 1),
+(2, 'Wundverschluss', 1),
+(3, 'Gipsverbände', 1),
+(4, 'Pflaster', 1),
+(5, 'Medizinische Schutzkleidung', 2),
+(6, 'Desinfektionsmittel', 2),
+(7, 'Reinigung und Pflege', 2),
+(8, 'Papierprodukte', 2),
+(9, 'Wellness und Massage', 2) ;

@@ -1,0 +1,49 @@
+:root {
+    --body-bg: #ffffff;
+    --text-color: #000000;
+    --btn-primary-bg: #007bff;
+    --btn-primary-border: #007bff;
+    --card-bg: #ffffff;
+    --input-bg: #ffffff;
+    --input-border: #ced4da;
+    --table-bg: #ffffff;
+    --table-border: #dee2e6;
+    --alert-bg: #f8f9fa;
+    --alert-border: #d1e7dd;
+}
+
+/* Apply variables */
+body {
+    background-color: var(--body-bg);
+    color: var(--text-color);
+}
+
+.btn-primary {
+    background-color: var(--btn-primary-bg);
+    border-color: var(--btn-primary-border);
+}
+
+.card {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+.form-control {
+    background-color: var(--input-bg);
+    border-color: var(--input-border);
+    color: var(--text-color);
+}
+
+.table {
+    background-color: var(--table-bg);
+    color: var(--text-color);
+    border-color: var(--table-border);
+}
+
+.alert {
+    background-color: var(--alert-bg);
+    border-color: var(--alert-border);
+    color: var(--text-color);
+}
+
+/* Add more Bootstrap component customizations as needed */

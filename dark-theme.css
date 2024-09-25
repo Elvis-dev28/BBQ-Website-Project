@@ -1,0 +1,80 @@
+:root {
+    --body-bg: #121212;
+    --text-color: #ffffff;
+    --btn-primary-bg: #1e7e34;
+    --btn-primary-border: #1e7e34;
+    --card-bg: #1f1f1f;
+    --input-bg: #333333;
+    --input-border: #555555;
+    --input-text-color: #ffffff;
+    --table-bg: #1f1f1f;
+    --table-border: #3a3a3a;
+    --alert-bg: #2d2d2d;
+    --alert-border: #555555;
+}
+
+/* Apply variables to body */
+body {
+    background-color: var(--body-bg);
+    color: var(--text-color);
+}
+
+/* Form fields */
+.form-control,
+textarea,
+select {
+    background-color: var(--input-bg) !important;
+    border-color: var(--input-border) !important;
+    color: var(--input-text-color) !important;
+}
+
+.form-control:focus,
+.form-control.is-invalid,
+.form-control.is-valid {
+    background-color: var(--input-bg) !important;
+    border-color: var(--input-border) !important;
+    color: var(--input-text-color) !important;
+}
+
+/* Cards */
+.card {
+    background-color: var(--card-bg) !important;
+    color: var(--text-color) !important;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--btn-primary-bg);
+    border-color: var(--btn-primary-border);
+}
+
+/* Table */
+.table {
+    background-color: var(--table-bg);
+    color: var(--text-color);
+    border-color: var(--table-border);
+}
+
+/* Alerts */
+.alert {
+    background-color: var(--alert-bg);
+    border-color: var(--alert-border);
+    color: var(--text-color);
+}
+
+/* Images: optional filter to make them blend in dark mode */
+img {
+    background-color: var(--card-bg);
+    padding: 10px;
+    border-radius: 4px;
+    transition: filter 0.3s ease, background-color 0.3s ease;
+}
+
+body.dark-theme img {
+    filter: brightness(0.8) contrast(1.2);
+}
+
+/* Add smooth transitions */
+body, .btn-primary, .card, .form-control, .table, .alert {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
